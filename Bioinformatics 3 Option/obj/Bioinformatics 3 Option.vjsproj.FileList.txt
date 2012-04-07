@@ -1,0 +1,5 @@
+obj\x86\Debug\Bioinformatics 3 Option.exe
+obj\x86\Debug\Bioinformatics 3 Option.pdb
+bin\Debug\Bioinformatics 3 Option.exe
+bin\Debug\Bioinformatics 3 Option.pdb
+obj\x86\Debug\ResolveAssemblyReference.cache

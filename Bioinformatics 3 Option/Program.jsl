@@ -1,0 +1,199 @@
+//Program: Program.jsl
+//Course: COSC306
+//Description: The purpose of this program is to analyze nucleotide pair content in DNA sequences. The program 
+//should provide options for the user to repeatedly specify a text file containing a DNA sequence 
+//and show the relevant pairs of nucleotides and the quantities and percentages of each.
+//Author: Josh Moore
+//Revised: 4-22-09
+//Compiler: Microsoft Visual J#
+//Comments: This program should allow the user to input new text files and analyze the results.
+//Notes: None
+
+//Class: Program.jsl
+//Description: None
+//******************************************************************************
+public class Program
+{
+	static TextFileClass textFile = new TextFileClass(0);
+	static KeyboardInputClass keyboardInput = new KeyboardInputClass();
+	static StringBuffer sb = new StringBuffer();
+	static String[] stringEntry = new String[16];
+	static int[] intEntry = new int[16];
+	static int beginningLength = 0;
+	static int endingLength = 2;
+	static int totalAdds = 0;
+
+	//Method:		main
+	//Description:  Calls menu()
+	//the program.
+	//Parameters:   None
+	//Returns:     	None
+	//Calls:       	menu()
+	//Globals:		textFile, keyboardInput, sb, stringEntry, intEntry, beginningLength, endingLength, totalAdds
+	//*******************************************************************************
+	public static void main(String[] args)
+	{
+		menu();
+	}
+
+	//Method:		menu
+	//Description:  Creates the menu and allows the user to enter a choice from the menu.
+	//Parameters:   keyboardInput, userInput, option
+	//Returns:     	None
+	//Calls:       	KeyboardInputClass, text(), analyze()
+	//Globals:		None
+	//*******************************************************************************
+	public static void menu()
+	{
+		System.out.println("Sequence Analysis: \n\n1. Input a Text File Sequence \n"
+			+ "2. Analyze a Sequence \n3. Exit the Program");
+
+		KeyboardInputClass keyboardInput = new KeyboardInputClass();
+		String userInput = "";
+		userInput = keyboardInput.getKeyboardInput("\nPlease Enter a Menu Option");
+		int option = Integer.parseInt(userInput);
+
+		switch (option)
+		{
+			default:
+				text();
+				break;
+
+			case 2:
+				analyze();
+				break;
+			case 3:
+				System.exit(0);
+				break;
+		}
+	}
+	//****************************************************************************** 
+	//******************************************************************************
+
+	//Method:		text
+	//Description:  Takes the user specified text and appends it to the StringBuffer and then prints it out
+	//Parameters:   count, search
+	//Returns:     	None
+	//Calls:		getFileName(), text[], append(), ToString(), menu()
+	//Globals:		sb
+	//*******************************************************************************
+	public static void text()
+	{
+		textFile.getFileName("\nSpecify the text file to be read");
+
+		if (textFile.fileName.length() > 0)
+		{
+			int count = textFile.getFileContents();
+
+			for (int i = 0; i < count; i++)
+			{
+				String search = textFile.text[i];
+				for (int j = 0; j < search.length(); j++)
+				{
+					sb.append(search.charAt(j));
+				}
+			}
+			sb.ToString();
+			System.out.println("\nInputted Sequence: " + sb);
+		}
+		System.out.println();
+		menu();
+	}
+	//****************************************************************************** 
+	//******************************************************************************
+
+	//Method:		analyze
+	//Description:  Analyzes the text, adds the data to arrays based off coded directions
+	//Parameters:   beginningLength, endingLength, position, found, entry, intCount
+	//Returns:     	None
+	//Calls:       	substring(), stringEntry[], intEntry[], compareTo(), output()
+	//Globals:		sb, stringEntry[], intEntry[], totalAdds
+	//*******************************************************************************
+	public static void analyze()
+	{
+		int beginningLength = 0;
+		int endingLength = 2;
+		int position = 0;
+		boolean found = false;
+		String entry = sb.substring(beginningLength, endingLength);
+
+
+		if (beginningLength == 0)
+		{
+			stringEntry[0] = entry;
+			intEntry[0] = 1;
+			position++;
+			totalAdds++;
+			beginningLength++;
+			endingLength++;
+		}
+
+		while (endingLength <= sb.length())
+		{
+			entry = sb.substring(beginningLength, endingLength);
+
+			for (int k = 0; k < position; k++)
+			{
+				if (stringEntry[k].compareTo(entry) == 0)
+				{
+					int intCount = intEntry[k];
+					intCount++;
+					intEntry[k] = intCount;
+					found = true;
+					totalAdds++;
+				}
+			}
+
+			if (found == false)
+			{
+				stringEntry[position] = entry;
+				intEntry[position] = 1;
+				position++;
+				totalAdds++;
+			}
+			beginningLength++;
+			endingLength++;
+			found = false;
+		}
+		output();
+	}
+	//****************************************************************************** 
+	//******************************************************************************
+
+	//Method:		output
+	//Description:  Outputs the data stored in the arrays, calculates percentages, and resets the global variables
+	//Parameters:   numberator, denominator, percent
+	//Returns:     	None
+	//Calls:       	None
+	//Globals:		stringEntry[], intEntry[], totalAdds
+	//*******************************************************************************
+	public static void output()
+	{
+		System.out.println();
+		for (int k = 0; k < 16; k++)
+		{
+			if ((stringEntry[k] != null) && (intEntry[k] != 0) && (totalAdds != 0))
+			{
+				double numerator = (double)(intEntry[k]);
+				double denominator = (double)(totalAdds);
+				int percent = (int)((numerator / denominator) * 100);
+
+				System.out.println("Sequence " + stringEntry[k] + " occurred " + intEntry[k]
+					+ " times out of " + totalAdds + " which is " + percent + " % of the sequence");
+			}
+		}
+		System.out.println();
+		sb.delete(0, sb.length());
+		for (int i = 0; i < 16; i++)
+		{
+			stringEntry[i] = null;
+			intEntry[i] = 0;
+		}
+		totalAdds = 0;
+		menu();
+	}
+	//****************************************************************************** 
+	//******************************************************************************
+}
+//****************************************************************************** 
+//******************************************************************************

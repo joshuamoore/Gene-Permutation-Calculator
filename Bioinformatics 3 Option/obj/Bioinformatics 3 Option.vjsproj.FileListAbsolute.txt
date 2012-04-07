@@ -1,0 +1,10 @@
+\\cswin2k3\USERS\jzmoore\My Documents\Visual Studio 2005\Projects\Bioinformatics 3 Option\Bioinformatics 3 Option\obj\x86\Debug\Bioinformatics 3 Option.exe
+\\cswin2k3\USERS\jzmoore\My Documents\Visual Studio 2005\Projects\Bioinformatics 3 Option\Bioinformatics 3 Option\obj\x86\Debug\Bioinformatics 3 Option.pdb
+\\cswin2k3\USERS\jzmoore\My Documents\Visual Studio 2005\Projects\Bioinformatics 3 Option\Bioinformatics 3 Option\bin\Debug\Bioinformatics 3 Option.exe
+\\cswin2k3\USERS\jzmoore\My Documents\Visual Studio 2005\Projects\Bioinformatics 3 Option\Bioinformatics 3 Option\bin\Debug\Bioinformatics 3 Option.pdb
+\\cswin2k3\USERS\jzmoore\My Documents\Visual Studio 2005\Projects\Bioinformatics 3 Option\Bioinformatics 3 Option\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\workhorse\Documents\Visual Studio 2005\Projects\Bioinformatics 3 Option\Bioinformatics 3 Option\obj\x86\Debug\Bioinformatics 3 Option.exe
+C:\Users\workhorse\Documents\Visual Studio 2005\Projects\Bioinformatics 3 Option\Bioinformatics 3 Option\obj\x86\Debug\Bioinformatics 3 Option.pdb
+C:\Users\workhorse\Documents\Visual Studio 2005\Projects\Bioinformatics 3 Option\Bioinformatics 3 Option\bin\Debug\Bioinformatics 3 Option.exe
+C:\Users\workhorse\Documents\Visual Studio 2005\Projects\Bioinformatics 3 Option\Bioinformatics 3 Option\bin\Debug\Bioinformatics 3 Option.pdb
+C:\Users\workhorse\Documents\Visual Studio 2005\Projects\Bioinformatics 3 Option\Bioinformatics 3 Option\obj\x86\Debug\ResolveAssemblyReference.cache
